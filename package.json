@@ -1,0 +1,24 @@
+{
+  "name": "restapi",
+  "version": "1.0.0",
+  "description": "https://www.youtube.com/watch?v=1XmwszKUNR8&list=PLSpJkDDmpFZ5rZ5-Aur9WRNsBDSUS-0B9",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomgelmers/restapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomgelmers/restapi/issues"
+  },
+  "homepage": "https://github.com/tomgelmers/restapi#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  }
+}
