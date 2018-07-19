@@ -1,24 +1,17 @@
 const userModel = require('../models/userModel');
 
 module.exports = {
-    index: (req, res, next) => {
-        user.find({})
-            .then(users => {
-                res.status(200).json(users);
-            })
-            .catch(err => {
-                next(err);
-            });
+    index: async (req, res, next) => {
+        let users = await userModel.find({});
+
+        if(users) {
+            res.status(200).json(users);
+        }
     },
 
-    newUser: (req, res, next) => {
+    newUser: async (req, res, next) => {
         let newUser = new userModel(req.body);
-        newUser.save()
-            .then(user => {
-                res.status(201).json(user);
-            })
-            .catch(err => {
-                next(err);
-            });
+        let user = await newUser.save();
+        res.status(201).json(user); 
     }
 };

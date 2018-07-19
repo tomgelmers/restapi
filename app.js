@@ -7,7 +7,7 @@ const app = express();
 const port = app.get('port') || 3000;
 
 //Routes
-const usersRoutes = require('./routes/users');
+const usersRoutes = require('./routes/userRoutes');
 
 //Database connection
 mongoose.connect('mongodb://localhost:27017/restapi', { useNewUrlParser: true });
