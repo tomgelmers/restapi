@@ -10,7 +10,8 @@ module.exports = {
     },
 
     newUser: async (req, res, next) => {
-        let newUser = new userModel(req.body);
+        console.log('req.value', req.value);
+        let newUser = new userModel(req.value.body);
         let user = await newUser.save();
         res.status(201).json(user); 
     },
@@ -23,7 +24,7 @@ module.exports = {
 
     replaceUser: async (req, res, next) => {
         let { userId } = req.value.params;
-        let newUser = req.body;
+        let newUser = req.value.body;
         await userModel.findByIdAndUpdate(userId, newUser);
 
         res.status(200).json({success: true});
@@ -31,7 +32,7 @@ module.exports = {
 
     updateUser: async (req, res, next) => {
         let { userId } = req.value.params;
-        let newUser = req.body;
+        let newUser = req.value.body;
         await userModel.findByIdAndUpdate(userId, newUser);
         res.status(200).json({success: true});
     },
@@ -53,7 +54,7 @@ module.exports = {
         let user = await userModel.findById(userId);
         let newCar = await carsController.newUserCar(req.body, user);
 
-        user.cars.push(newCar);
+        user.cars.push(newCar._id);
         await user.save();
         res.status(201).json(newCar);
     }
