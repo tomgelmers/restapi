@@ -52,7 +52,7 @@ module.exports = {
     newUserCar: async (req, res, next) => {
         let { userId } = req.value.params;
         let user = await userModel.findById(userId);
-        let newCar = await carsController.newUserCar(req.body, user);
+        let newCar = await carsController.newUserCar(req.value.body, user);
 
         user.cars.push(newCar._id);
         await user.save();
