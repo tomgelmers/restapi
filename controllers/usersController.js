@@ -1,5 +1,5 @@
 const userModel = require('../models/userModel');
-const carModel = require('../models/carModel');
+const carsController = require('./carsController');
 
 
 
@@ -51,9 +51,8 @@ module.exports = {
     newUserCar: async (req, res, next) => {
         let { userId } = req.value.params;
         let user = await userModel.findById(userId);
-        let newCar = new carModel(req.body);
-        newCar.seller = user;
-        await newCar.save();
+        let newCar = await carsController.newUserCar(req.body, user);
+
         user.cars.push(newCar);
         await user.save();
         res.status(201).json(newCar);
