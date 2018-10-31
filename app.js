@@ -8,6 +8,7 @@ const port = app.get('port') || 3000;
 
 //Routes
 const usersRoutes = require('./routes/userRoutes');
+const carRoutes = require('./routes/carRoutes');
 
 //Database connection
 mongoose.connect('mongodb://localhost:27017/restapi', { useNewUrlParser: true });
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 
 //Routing
 app.use('/users', usersRoutes);
+app.use('/cars', carRoutes);
 
 //Catch 404 errors and forward them to error handler
 app.use((req, res, next) => {
