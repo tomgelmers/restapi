@@ -8,6 +8,12 @@ module.exports = {
         res.status(200).json(cars);
     },
 
+    getCar: async(req, res, next) => {
+        let { carId } = req.value.params;
+        let car = await carModel.findById(carId);
+        res.status(200).json(car);
+    },
+
     newCar: async (req, res, next) => {
         let seller = await userModel.findById(req.body.seller);
         let newCarBody = req.body;
