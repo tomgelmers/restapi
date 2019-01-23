@@ -5,13 +5,14 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = app.get('port') || 3000;
+const db = app.get('db') || 'mongodb://localhost:27017/restapi';
 
 //Routes
 const usersRoutes = require('./routes/userRoutes');
 const carRoutes = require('./routes/carRoutes');
 
 //Database connection
-mongoose.connect('mongodb://localhost:27017/restapi', { useNewUrlParser: true });
+mongoose.connect(db, { useNewUrlParser: true });
 
 //Middlewares
 app.use(morgan('dev'));
