@@ -20,6 +20,9 @@ app.use(bodyParser.json());
 //Routing
 app.use('/users', usersRoutes);
 app.use('/cars', carRoutes);
+app.use('/', function(req, res) {
+    res.redirect('/cars');
+})
 
 //Catch 404 errors and forward them to error handler
 app.use((req, res, next) => {

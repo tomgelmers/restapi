@@ -9,9 +9,29 @@ module.exports = {
     },
 
     getCar: async(req, res, next) => {
-        let { carId } = req.value.params;
+        let { carId } = req.value.params;        
         let car = await carModel.findById(carId);
         res.status(200).json(car);
+    },
+
+    updateCar: async(req, res, next) => {
+        let { carId } = req.value.params;
+        let newCar = req.value.body;
+        await carModel.findByIdAndUpdate(carId , newCar);
+        res.status(200).json({success: true});
+    },
+
+    deleteCar: async(req, res, next) => {
+        let { carId } = req.value.params;
+        await carModel.findByIdAndDelete(carId);
+        res.status(200).json({success: true});
+    },
+
+    replaceCar: async(req, res, next) => {
+        let {carId} = req.value.params;
+        let newCar = req.value.body;
+        await carModel.findByIdAndUpdate(carId, newCar);
+        res.status(200).json({success: true});
     },
 
     newCar: async (req, res, next) => {

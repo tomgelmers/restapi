@@ -69,6 +69,12 @@ module.exports = {
             year: Joi.number().required()
         }),
 
+        carOptionalSchema: Joi.object().keys({
+            make: Joi.string(),
+            model: Joi.string(),
+            year: Joi.number()
+        }),
+
         carUserSchema: Joi.object().keys({
             make: Joi.string().required(),
             model: Joi.string().required(),
